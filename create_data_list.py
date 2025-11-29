@@ -1,5 +1,6 @@
 import os
 import random
+import time
 
 
 def create_data_list(dataset_path, file_list, mode='train'):
@@ -24,7 +25,7 @@ def get_file_list(directory, file_list, ext=None):
 
 image_folder = 'data/images'
 output_folder = 'data'
-train_ratio = 0.8
+train_ratio = 0.5
 
 jpg_list = get_file_list(image_folder, [], 'jpg')
 print("Founded " + str(len(jpg_list)) + " jpg images in " + image_folder)
@@ -37,11 +38,11 @@ for path in jpg_list:
     img_path = os.path.join(data_dir, base_name).replace('\\', '/')
     img_list.append((img_path, angle))
 
-random.seed(256)
+random.seed(time.time())
 random.shuffle(img_list)
 train_num = int(len(img_list) * train_ratio)
 tran_list = img_list[0:train_num]
 test_list = img_list[train_num:]
 
 create_data_list(output_folder, tran_list, 'train')
-create_data_list(output_folder, test_list, 'test')
+create_data_list(output_folder, test_list, 'evaluation')
