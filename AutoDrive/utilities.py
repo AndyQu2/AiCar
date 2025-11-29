@@ -18,7 +18,7 @@ def evaluate(model, data_loader, criterion, device):
 def train(model, train_loader, criterion, optimizer, epochs, device, writer):
     best_model = None
     best_loss = float('inf')
-    scheduler = optim.lr_scheduler.ExponentialLR(optimizer, gamma=7e-3)
+    scheduler = optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.99)
 
     for epoch in range(epochs):
         model.train()

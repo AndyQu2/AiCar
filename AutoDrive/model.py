@@ -19,11 +19,20 @@ class AutoDriveNet(nn.Module):
         self.fully_connected = nn.Sequential(
             nn.Linear(in_features=64 * 8 * 13, out_features=100),
             nn.SELU(),
+            nn.Dropout(0.5),
             nn.Linear(in_features=100, out_features=50),
             nn.SELU(),
             nn.Linear(in_features=50, out_features=10),
             nn.SELU(),
-            nn.Dropout(0.5),
+            nn.Linear(in_features=10, out_features=10),
+            nn.SELU(),
+            nn.Dropout(0.1),
+            nn.Linear(in_features=10, out_features=10),
+            nn.SELU(),
+            nn.Dropout(0.1),
+            nn.Linear(in_features=10, out_features=10),
+            nn.SELU(),
+            nn.Dropout(0.1),
             nn.Linear(in_features=10, out_features=1)
         )
 
