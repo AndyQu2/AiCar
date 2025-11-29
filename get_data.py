@@ -7,8 +7,7 @@ import numpy as np
 
 from utilities import get_interest_region, detect_line, average_lines
 
-NUM_TRAIN = 10000
-NUM_TEST = 10000
+NUM_GET = 30000
 
 def get_training_data(loop_count, output_dir):
     picture_index = 0
@@ -84,6 +83,5 @@ def get_training_data(loop_count, output_dir):
         frame = cv2.cvtColor(obv, cv2.COLOR_RGB2BGR)
     return None
 
-get_training_data(NUM_TRAIN, 'data\\train\\')
-get_training_data(NUM_TEST, 'data\\test\\')
+get_training_data(NUM_GET, 'data\\images\\')
 print("Program finished")
